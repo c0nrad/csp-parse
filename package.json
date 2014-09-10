@@ -1,0 +1,28 @@
+{
+  "name": "csp-parse",
+  "version": "0.0.0",
+  "description": "Content-Security-Policy report and policy parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/c0nrad/csp-parse.git"
+  },
+  "keywords": [
+    "csp",
+    "content-security-policy",
+    "security"
+  ],
+  "author": "c0nrad <c0nrad@c0nrad.io> (http://c0nrad@c0nrad.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/c0nrad/csp-parse/issues"
+  },
+  "homepage": "https://github.com/c0nrad/csp-parse",
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
+  }
+}

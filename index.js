@@ -32,10 +32,6 @@ function Policy(policy) {
   return this;
 }
 
-Policy.prototype.script = function() {
-  return this.directives['script-src'];
-};
-
 Policy.prototype.get = function(directive) {
   directive = promote(directive);
   return this.directives[directive];

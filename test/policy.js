@@ -13,14 +13,14 @@ describe('policy creation', function() {
 
   it('Should correctly return directives', function(done) {
     var policy = new csp.Policy(ExamplePolicy);
-    policy.script().should.eql(['\'self\'']);
+    policy.get('script').should.eql(['\'self\'']);
     done();
   });
 
   it('Should correctly add directives', function(done) {
     var policy = new csp.Policy(ExamplePolicy);
     policy.add('script-src', 'cdn.example.com');
-    policy.script().should.eql(['\'self\'', 'cdn.example.com']);
+    policy.get('script').should.eql(['\'self\'', 'cdn.example.com']);
     done();
   });
 

@@ -28,11 +28,14 @@ policy.toString() // "script-src 'self' www.google-analytics.com ajax.googleapis
 ### csp.Policy(string)
   Takes a CSP policy and returns a Policy object.
 
-### Policy.script()
-  Returns a list of allow script origins
+### Policy.get(string directive)
+  Returns a list of allowed origins for 'directive'
 
 ### Policy.add(string directive, string value)
-  Adds value to the directive list for the policy
+  Adds value to the 'directive' list for the 'policy'
+
+### Policy.toString()
+  Returns string representation of policy
 
 ## Test
 

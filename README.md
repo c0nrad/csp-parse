@@ -25,7 +25,7 @@ policy.toString() // "script-src 'self' www.google-analytics.com ajax.googleapis
 
 ## API
 
-### csp.parse(string)
+### csp.Policy(string)
   Takes a CSP policy and returns a Policy object.
 
 ### Policy.script()

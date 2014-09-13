@@ -28,5 +28,31 @@ describe('policy creation', function() {
     var policy = new csp.Policy(ExamplePolicy);
     policy.toString().should.eql(ExamplePolicy);
     done();
-  })
+  });
+});
+
+describe('promote / demote', function() {
+  it('should correctly promote directive', function(done) {
+    var directive = 'script';
+    csp.promote(directive).should.eql('script-src');
+    done();
+  });
+
+  it('should return if already promoted', function(done) {
+    var directive = 'script-src';
+    csp.promote(directive).should.eql('script-src');
+    done();
+  });
+
+  it('should correctly demote directive', function(done) {
+    var directive = 'script-src';
+    csp.demote(directive).should.eql('script');
+    done();
+  });
+
+  it('should return if already demotex', function(done) {
+    var directive = 'script';
+    csp.demote(directive).should.eql('script');
+    done();
+  });
 });

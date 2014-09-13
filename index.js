@@ -1,5 +1,18 @@
 'use strict';
 
+// 'script-src' -> 'srcipt'
+function demote(directive) {
+  return directive.split('-')[0];
+}
+
+// 'script' -> 'script-src'
+function promote(directive) {
+  if (directive.split('-').length === 1) {
+    return directive + '-src';
+  }
+  return directive;
+}
+
 function Policy(policy) {
   this.raw = policy;
   this.directives = [];
@@ -24,10 +37,12 @@ Policy.prototype.script = function() {
 };
 
 Policy.prototype.get = function(directive) {
+  directive = promote(directive);
   return this.directives[directive];
 };
 
 Policy.prototype.add = function(directive, value) {
+  directive = promote(directive);
   if (!this.directives[directive]) {
     this.directives[directive] = [value];
   } else {
@@ -45,3 +60,5 @@ Policy.prototype.toString = function() {
 };
 
 exports.Policy = Policy;
+exports.promote = promote;
+exports.demote = demote;

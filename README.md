@@ -2,6 +2,10 @@
 
 NodeJS module for parsing Content-Security-policy policies.
 
+The module takes raw CSP policy strings, and parses them into Policy objects. From there the objects can be manipulated (adding/removing different values from the directives).
+
+Afterwards policy.toString() can be called to get the updated policy.
+
 ## Installation
 
 ```

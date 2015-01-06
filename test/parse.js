@@ -16,7 +16,7 @@ describe('policy creation', function() {
     done();
   });
 
-  it('should allow for pprint policies to be created', function(done) {
+  it('should allow for pretty printed policies to be created', function(done) {
     var PPrintPolicy = "default-src\n\t'none';\nscript-src\n\t'self';\nconnect-src\n\thttps: 'self';\nimg-src\n\t'self';\nstyle-src\n\t'self';";
     var policy = new Policy(ExamplePolicy);
     policy.get('script-src').should.eql('\'self\'');
@@ -49,10 +49,10 @@ describe('policy creation', function() {
     done();
   });
 
-  it('Should correctly pretty print out policies PPRINT', function(done) {
+  it('Should correctly pretty print out policies toPrettyString', function(done) {
     var policy = new Policy(ExamplePolicy);
     var out = "default-src\n\t'none';\nscript-src\n\t'self';\nconnect-src\n\thttps: 'self';\nimg-src\n\t'self';\nstyle-src\n\t'self';";
-    policy.pprint().should.eql(out);
+    policy.toPrettyString().should.eql(out);
     done();
   });
 });

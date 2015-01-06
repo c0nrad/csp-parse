@@ -75,7 +75,7 @@ Policy.prototype.toString = Policy.prototype.string = function() {
   return out.trim();
 };
 
-Policy.prototype.pprint = function() {
+Policy.prototype.toPrettyString = Policy.prototype.prettyString = function() {
   var out = '';
   for (var directive in this.directives) {
     if (this.directives[directive]) {

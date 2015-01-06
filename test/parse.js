@@ -58,7 +58,6 @@ describe('policy creation', function() {
 });
 
 describe('policy modification', function() {
-
   it('should correcty allow you to set a directive SET', function(done) {
     var policy = new csp.Policy(ExamplePolicy);
     policy.set('script-src', 'google.com cdn.example.com');
@@ -77,32 +76,6 @@ describe('policy modification', function() {
     var policy = new csp.Policy(ExamplePolicy);
     policy.remove('connect-src', 'https:');
     policy.get('connect-src').should.eql('\'self\'');
-    done();
-  });
-});
-
-describe('promote / demote', function() {
-  it('should correctly promote directive', function(done) {
-    var directive = 'script';
-    csp.promote(directive).should.eql('script-src');
-    done();
-  });
-
-  it('should return if already promoted', function(done) {
-    var directive = 'script-src';
-    csp.promote(directive).should.eql('script-src');
-    done();
-  });
-
-  it('should correctly demote directive', function(done) {
-    var directive = 'script-src';
-    csp.demote(directive).should.eql('script');
-    done();
-  });
-
-  it('should return if already demotex', function(done) {
-    var directive = 'script';
-    csp.demote(directive).should.eql('script');
     done();
   });
 });

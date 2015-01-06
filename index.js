@@ -1,18 +1,5 @@
 'use strict';
 
-// 'script-src' -> 'srcipt'
-function demote(directive) {
-  return directive.split('-')[0];
-}
-
-// 'script' -> 'script-src'
-function promote(directive) {
-  if (directive.split('-').length === 1) {
-    return directive + '-src';
-  }
-  return directive;
-}
-
 function Policy(policy) {
   // Allow empty policies
   if (!policy) {
@@ -101,5 +88,3 @@ Policy.prototype.pprint = function() {
 
 
 exports.Policy = Policy;
-exports.promote = promote;
-exports.demote = demote;

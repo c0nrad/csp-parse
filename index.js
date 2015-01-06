@@ -76,7 +76,6 @@ Policy.prototype.toString = Policy.prototype.string = function() {
 };
 
 Policy.prototype.pprint = function() {
-  // var out = "default-src\n\t'none';\nscript-src\n\t'self';\nconnect-src\n\thttps: 'self';\nimg-src\n\t'self';\nstyle-src\n\t'self';";
   var out = '';
   for (var directive in this.directives) {
     if (this.directives[directive]) {
@@ -86,5 +85,4 @@ Policy.prototype.pprint = function() {
   return out.substring(0,out.length-1);
 };
 
-
-exports.Policy = Policy;
+module.exports = Policy;

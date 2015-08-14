@@ -3,7 +3,7 @@
 var should = require('should');
 var Policy = require('../index.js');
 
-var ExamplePolicy = "default-src 'none'; script-src 'self'; connect-src https: 'self'; img-src 'self'; style-src 'self';";
+var ExamplePolicy = "default-src 'none'; script-src 'nonce-ExamplePolicyTests'; connect-src https: 'self'; img-src 'self'; style-src 'self';";
 
 describe('policy creation', function() {
   it('Should allow for new policies objects to be created', function(done) {
@@ -17,23 +17,23 @@ describe('policy creation', function() {
   });
 
   it('should allow for pretty printed policies to be created', function(done) {
-    var PPrintPolicy = "default-src\n\t'none';\nscript-src\n\t'self';\nconnect-src\n\thttps: 'self';\nimg-src\n\t'self';\nstyle-src\n\t'self';";
+    var PPrintPolicy = "default-src\n\t'none';\nscript-src\n\t'nonce-ExamplePolicyTests';\nconnect-src\n\thttps: 'self';\nimg-src\n\t'self';\nstyle-src\n\t'self';";
     var policy = new Policy(ExamplePolicy);
-    policy.get('script-src').should.eql('\'self\'');
+    policy.get('script-src').should.eql('\'nonce-ExamplePolicyTests\'');
     policy.get('connect-src').should.eql('https: \'self\'');
     done();
   });
 
   it('Should correctly return directives', function(done) {
     var policy = new Policy(ExamplePolicy);
-    policy.get('script-src').should.eql('\'self\'');
+    policy.get('script-src').should.eql('\'nonce-ExamplePolicyTests\'');
     policy.get('connect-src').should.eql('https: \'self\'');
     done();
   });
 
   it('Should handle casing correctly', function(done) {
-    var policy = new Policy(ExamplePolicy.toUpperCase());
-    policy.get('script-src').should.eql('\'self\'');
+    var policy = new Policy(ExamplePolicy.replace('script-src', 'Script-SRC'));
+    policy.get('script-src').should.eql('\'nonce-ExamplePolicyTests\'');
     done();
   });
 
@@ -51,7 +51,7 @@ describe('policy creation', function() {
 
   it('Should correctly pretty print out policies toPrettyString', function(done) {
     var policy = new Policy(ExamplePolicy);
-    var out = "default-src\n\t'none';\nscript-src\n\t'self';\nconnect-src\n\thttps: 'self';\nimg-src\n\t'self';\nstyle-src\n\t'self';";
+    var out = "default-src\n\t'none';\nscript-src\n\t'nonce-ExamplePolicyTests';\nconnect-src\n\thttps: 'self';\nimg-src\n\t'self';\nstyle-src\n\t'self';";
     policy.toPrettyString().should.eql(out);
     done();
   });
@@ -68,7 +68,7 @@ describe('policy modification', function() {
   it('Should correctly add sources to directives ADD', function(done) {
     var policy = new Policy(ExamplePolicy);
     policy.add('script-src', 'cdn.example.com');
-    policy.get('script-src').should.eql('\'self\' cdn.example.com');
+    policy.get('script-src').should.eql('\'nonce-ExamplePolicyTests\' cdn.example.com');
     done();
   });
 

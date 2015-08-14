@@ -8,8 +8,6 @@ function Policy(policy) {
     return this;
   }
 
-  policy = policy.toLowerCase();
-
   this.raw = policy;
   this.directives = {};
 
@@ -22,6 +20,9 @@ function Policy(policy) {
     if (!name) {
       continue;
     }
+
+    name = name.toLowerCase();
+
     var values = tokens.slice(1, tokens.length);
     this.directives[name] = values.join(' ');
   }
